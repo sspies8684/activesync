@@ -1,8 +1,0 @@
-
-de.sloc.sspies.activesync.backend.SettingsProvider: de.sloc.sspies.activesync.backend.mock.DefaultSettingsProvider
-de.sloc.sspies.activesync.backend.AuthenticationProvider: de.sloc.sspies.activesync.backend.mock.AllowAllAuthenticationProvider
-de.sloc.sspies.activesync.backend.MailProvider: de.sloc.sspies.activesync.backend.mock.StaticMailboxProvider
-de.sloc.sspies.activesync.backend.ContactsProvider: de.sloc.sspies.activesync.backend.mock.StaticContactsProvider
-de.sloc.sspies.activesync.backend.Store: de.sloc.sspies.activesync.backend.mock.MemoryStore
-de.sloc.sspies.activesync.backend.maxHeartbeatInterval: 900
-de.sloc.sspies.activesync.backend.minHeartbeatInterval: 60
