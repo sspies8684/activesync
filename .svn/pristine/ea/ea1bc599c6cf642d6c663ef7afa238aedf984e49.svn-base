@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="GetItemEstimate" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:airsync="AirSync" targetNamespace="GetItemEstimate"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="AirSync" schemaLocation="AirSync.xsd" />
+
+
+	<xs:element name="Collection">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="airsync:SyncKey" />
+				<xs:element name="CollectionId">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="64" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element ref="airsync:FilterType" minOccurs="0" />
+				<xs:element ref="airsync:Options" minOccurs="0"
+					maxOccurs="2" />
+				<xs:element ref="airsync:ConversationMode" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Collections">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:Collection" maxOccurs="300" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="GetItemEstimateRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:Collections" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="GetItemEstimateResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Response">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Status" type="xs:unsignedByte" />
+							<xs:element name="Collection" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="CollectionId">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="64" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Estimate" type="xs:unsignedByte" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

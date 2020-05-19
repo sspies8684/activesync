@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="Provision" attributeFormDefault="unqualified"
+	elementFormDefault="qualified" targetNamespace="Provision"
+	xmlns:airsyncbase="AirSyncBase"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:settings="Settings">
+
+	<xs:import namespace="Settings" schemaLocation="Settings.xsd" />
+	<xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd" />
+
+	<xs:element name="ProvisionRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="settings:DeviceInformation" minOccurs="0" />
+				<xs:element name="Policies" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Policy">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PolicyType" type="xs:string" />
+										<xs:element name="PolicyKey" type="xs:string"
+											minOccurs="0" />
+										<xs:element name="Status" type="xs:string"
+											minOccurs="0" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RemoteWipe" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Status" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+
+	<xs:element name="ProvisionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Status" type="xs:unsignedByte" />
+				<xs:element name="Policies">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Policy">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PolicyType" type="xs:string" />
+										<xs:element name="Status" type="xs:unsignedByte" />
+										<xs:element name="PolicyKey" type="xs:string" />
+										<xs:element name="Data">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="EASProvisionDoc">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="DevicePasswordEnabled"
+																	minOccurs="0" type="airsyncbase:msboolean" />
+																<xs:element name="AlphanumericDevicePasswordRequired"
+																	type="airsyncbase:msboolean" minOccurs="0" />
+																<xs:element name="PasswordRecoveryEnabled"
+																	type="airsyncbase:msboolean" minOccurs="0" />
+																<xs:element name="RequireStorageCardEncryption"
+																	type="airsyncbase:msboolean" minOccurs="0" />
+																<xs:element name="AttachmentsEnabled" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="MinDevicePasswordLength"
+																	type="xs:unsignedByte" minOccurs="0" />
+																<xs:element name="MaxInactivityTimeDeviceLock"
+																	type="xs:unsignedInt" minOccurs="0" />
+																<xs:element name="MaxDevicePasswordFailedAttempts"
+																	type="xs:unsignedByte" minOccurs="0" />
+																<xs:element name="MaxAttachmentSize" type="xs:unsignedInt"
+																	minOccurs="0" />
+																<xs:element name="AllowSimpleDevicePassword"
+																	type="airsyncbase:msboolean" minOccurs="0" />
+																<xs:element name="DevicePasswordExpiration"
+																	type="xs:unsignedInt" minOccurs="0" />
+																<xs:element name="DevicePasswordHistory"
+																	type="xs:unsignedInt" minOccurs="0" />
+																<xs:element name="AllowStorageCard" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="AllowCamera" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="RequireDeviceEncryption"
+																	type="airsyncbase:msboolean" minOccurs="0" />
+																<xs:element name="AllowUnsignedApplications"
+																	type="airsyncbase:msboolean" minOccurs="0" />
+																<xs:element name="AllowUnsignedInstallationPackages"
+																	type="airsyncbase:msboolean" minOccurs="0" />
+																<xs:element name="MinDevicePasswordComplexCharacters"
+																	type="xs:unsignedByte" minOccurs="0" />
+																<xs:element name="AllowWiFi" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="AllowTextMessaging" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="AllowPOPIMAPEmail" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="AllowBluetooth" type="xs:unsignedByte"
+																	minOccurs="0" />
+																<xs:element name="AllowIrDA" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="RequireManualSyncWhenRoaming"
+																	type="airsyncbase:msboolean" minOccurs="0" />
+																<xs:element name="AllowDesktopSync" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="MaxCalendarAgeFilter" type="xs:unsignedInt"
+																	minOccurs="0" />
+																<xs:element name="AllowHTMLEmail" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="MaxEmailAgeFilter" type="xs:unsignedInt"
+																	minOccurs="0" />
+																<xs:element name="MaxEmailBodyTruncationSize"
+																	type="xs:integer" minOccurs="0" />
+																<xs:element name="MaxEmailHTMLBodyTruncationSize"
+																	type="xs:integer" minOccurs="0" />
+																<xs:element name="RequireSignedSMIMEMessages"
+																	type="airsyncbase:msboolean" minOccurs="0" />
+																<xs:element name="RequireEncryptedSMIMEMessages "
+																	type="airsyncbase:msboolean" minOccurs="0" />
+																<xs:element name="RequireSignedSMIMEAlgorithm"
+																	type="xs:integer" minOccurs="0" />
+																<xs:element name="RequireEncryptionSMIMEAlgorithm"
+																	type="xs:integer" minOccurs="0" />
+																<xs:element name="AllowSMIMEEncryptionAlgorithmNegotiation"
+																	type="xs:integer" minOccurs="0" />
+																<xs:element name="AllowSMIMESoftCerts" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="AllowBrowser" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="AllowConsumerEmail" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="AllowRemoteDesktop" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="AllowInternetSharing" type="airsyncbase:msboolean"
+																	minOccurs="0" />
+																<xs:element name="UnapprovedInROMApplicationList"
+																	minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="ApplicationName"
+																				minOccurs="0" type="xs:string" />
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="ApprovedApplicationList"
+																	minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Hash" minOccurs="0"
+																				type="xs:string" />
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RemoteWipe" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
+

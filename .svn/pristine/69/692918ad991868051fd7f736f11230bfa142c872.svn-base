@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Options xmlns="AirSync" xsi:schemaLocation="AirSync AirSync.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<FilterType>2</FilterType>
+	<Class></Class>
+</Options>
+

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="ComposeMail" xmlns:airsyncbase="AirSyncBase"
+	attributeFormDefault="unqualified" elementFormDefault="qualified"
+	targetNamespace="ComposeMail" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:rm="RightsManagement">
+
+	<xs:import namespace="RightsManagement" schemaLocation="RightsManagement.xsd" />
+	<xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd" />
+
+	<xs:element name="SendMailRequest">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="ClientId">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="40" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="AccountId" type="xs:string" minOccurs="0" />
+				<xs:element name="SaveInSentItems" type="airsyncbase:EmptyTag"
+					minOccurs="0" />
+				<xs:element name="Mime" type="xs:string" />
+				<xs:element ref="rm:TemplateID" minOccurs="0" />
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="SendMailResponse">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="Status" type="xs:integer" minOccurs="0" />
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="SmartReplyRequest">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="ClientId">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="40" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Source">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="FolderId" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1" />
+										<xs:maxLength value="64" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ItemId" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1" />
+										<xs:maxLength value="64" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="LongId" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1" />
+										<xs:maxLength value="256" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="InstanceId" type="xs:string"
+								minOccurs="0" />
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="AccountId" type="xs:string" minOccurs="0" />
+				<xs:element name="SaveInSentItems" type="airsyncbase:EmptyTag"
+					minOccurs="0" />
+				<xs:element name="ReplaceMime" type="airsyncbase:EmptyTag"
+					minOccurs="0" />
+				<xs:element name="Mime" type="xs:string" />
+				<xs:element ref="rm:TemplateID" minOccurs="0" />
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SmartReplyResponse">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="Status" type="xs:integer" minOccurs="0" />
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

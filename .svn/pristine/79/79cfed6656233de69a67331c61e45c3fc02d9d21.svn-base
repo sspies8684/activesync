@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="Ping" attributeFormDefault="unqualified"
+	elementFormDefault="qualified" targetNamespace="Ping"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="PingRequest">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="HeartbeatInterval" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Folders" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Folder" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="Id">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="64" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Class">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Email" />
+													<xs:enumeration value="Calendar" />
+													<xs:enumeration value="Contacts" />
+													<xs:enumeration value="Tasks" />
+													<xs:enumeration value="Notes" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PingResponse">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="Status" type="xs:unsignedByte" />
+				<xs:element minOccurs="0" name="Folders">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" name="Folder" type=" xs:string " />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element minOccurs="0" name="MaxFolders" type="xs:integer" />
+				<xs:element minOccurs="0" name="HeartbeatInterval" type="xs:integer" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
